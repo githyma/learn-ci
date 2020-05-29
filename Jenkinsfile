@@ -30,7 +30,27 @@ pipeline {
                 sh label: '', script: 'mvn clean install'
             }
         }
+        stages {
+            stage('execute parallel') {
+                parallel {
+                   stage('diplay AppName') {
+                        steps {
+                            sh 'echo $APP_NAME'
+                                
+                        }
+                    }
+                    stage('diplay AppVersion') {
+                        steps {
+                            
+                            sh 'echo $APP_VERSION'         
+                        }
+                    } 
+                }
+            }
 
+        }
+
+        
         stage('code analysis'){
             steps{
                 sh 'mvn sonar:sonar'
