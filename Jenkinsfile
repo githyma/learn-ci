@@ -69,5 +69,16 @@ pipeline {
         
 
     }
+    post { 
+        success {
+            mail to: 'reachhyma4bi@gmail.com', subject: 'pipeline success'
+        }
+        failures {
+            mail to: 'reachhyma4bi@gmail.com', subject: 'pipeline failure'
+        }
+        always {
+            echo "job finished"
+        }
+    }
     
 }
