@@ -71,10 +71,10 @@ pipeline {
     }
     post { 
         success {
-            mail to: 'reachhyma4bi@gmail.com', subject: 'pipeline success', body: ''
+           mail bcc: '', body: 'to send an email', cc: '', from: '', replyTo: '', subject: 'success', to: 'reachhyma4bi@gmail.com'
         }
         failure {
-            mail to: 'reachhyma4bi@gmail.com', subject: 'pipeline failure', body: ''
+            mail bcc: '', body: 'to send an email', cc: '', from: '', replyTo: '', subject: 'failure', to: 'reachhyma4bi@gmail.com'
         }
         always {
             echo "job finished"
