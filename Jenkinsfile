@@ -9,6 +9,9 @@ pipeline {
         APP_NAME = "Sample_App"
         APP_VERSION = 5
     }
+    parameters {
+         booleanParam defaultValue: false, description: '', name: 'analysis'
+    }
     options {
         buildDiscarder logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '3', numToKeepStr: '10')
         disableConcurrentBuilds()
@@ -47,13 +50,14 @@ pipeline {
             }
         }
 
-    
-
-        
         stage('code analysis'){
+            when {
+                expression {
+                    params.analysis
+                }
+            }
             steps{
                 sh 'mvn sonar:sonar'
-            //tool name: 'sonar', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
             }
         }
         stage('diplay env') {
