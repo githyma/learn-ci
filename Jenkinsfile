@@ -69,16 +69,5 @@ pipeline {
         
 
     }
-    post { 
-        success {
-           mail bcc: '', body: 'to send an email', cc: '', from: '', replyTo: '', subject: 'success', to: 'reachhyma4bi@gmail.com'
-        }
-        failure {
-            mail bcc: '', body: 'to send an email', cc: '', from: '', replyTo: '', subject: 'failure', to: 'reachhyma4bi@gmail.com'
-        }
-        always {
-            echo "job finished"
-        }
-    }
     
 }
