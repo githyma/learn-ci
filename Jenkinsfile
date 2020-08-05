@@ -30,7 +30,7 @@ pipeline {
         
         stage('build') {
             steps {
-                sh label: '', script: 'mvn clean install'
+                sh label: '', script: 'mvn clean install -DskipTests'
             }
         }
         stage('execute parallel') {
